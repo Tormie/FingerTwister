@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{27F4C554-9924-3BD2-A806-3C2B58DD03BE}</ProjectGuid>
+    <ProjectGuid>{D2915ED5-18C5-DF22-D181-FFB5012A393B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -52,13 +52,13 @@
     <UnityVersion>2020.1.8f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Assets\MenuButton.cs" />
+    <Compile Include="Assets\HandButton.cs" />
+    <Compile Include="Assets\StartButton.cs" />
     <Compile Include="Assets\KeyScript.cs" />
+    <Compile Include="Assets\PlayerText.cs" />
     <Compile Include="Assets\GameEngine.cs" />
     <Compile Include="Assets\DataStore.cs" />
-    <Compile Include="Assets\MenuButton.cs" />
-    <Compile Include="Assets\StartButton.cs" />
-    <Compile Include="Assets\HandButton.cs" />
-    <Compile Include="Assets\PlayerText.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
