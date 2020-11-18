@@ -125,23 +125,16 @@ public class GameEngine : MonoBehaviour
 
     void FixedUpdate()
     {
-        ClearKeys();
-        SetColors();
         CheckFingers2();
     }
 
     void SetKeys()
     {
         player1key1.GetComponent<KeyScript>().keyLetter = player1Keys[0];
-        player1key1.GetComponent<KeyScript>().SetLetter();
         player1key2.GetComponent<KeyScript>().keyLetter = player1Keys[1];
-        player1key2.GetComponent<KeyScript>().SetLetter();
         player1key3.GetComponent<KeyScript>().keyLetter = player1Keys[2];
-        player1key3.GetComponent<KeyScript>().SetLetter();
         player1key4.GetComponent<KeyScript>().keyLetter = player1Keys[3];
-        player1key4.GetComponent<KeyScript>().SetLetter();
         player1key5.GetComponent<KeyScript>().keyLetter = player1Keys[4];
-        player1key5.GetComponent<KeyScript>().SetLetter();
         if (playerAmount == 2)
         {
             player2key1.GetComponent<KeyScript>().keyLetter = player2Keys[0];
@@ -149,11 +142,6 @@ public class GameEngine : MonoBehaviour
             player2key3.GetComponent<KeyScript>().keyLetter = player2Keys[2];
             player2key4.GetComponent<KeyScript>().keyLetter = player2Keys[3];
             player2key5.GetComponent<KeyScript>().keyLetter = player2Keys[4];
-            player2key1.GetComponent<KeyScript>().SetLetter();
-            player2key2.GetComponent<KeyScript>().SetLetter();
-            player2key3.GetComponent<KeyScript>().SetLetter();
-            player2key4.GetComponent<KeyScript>().SetLetter();
-            player2key5.GetComponent<KeyScript>().SetLetter();
         }
         if (playerAmount == 3)
         {
@@ -167,16 +155,6 @@ public class GameEngine : MonoBehaviour
             player3key3.GetComponent<KeyScript>().keyLetter = player3Keys[2];
             player3key4.GetComponent<KeyScript>().keyLetter = player3Keys[3];
             player3key5.GetComponent<KeyScript>().keyLetter = player3Keys[4];
-            player2key1.GetComponent<KeyScript>().SetLetter();
-            player2key2.GetComponent<KeyScript>().SetLetter();
-            player2key3.GetComponent<KeyScript>().SetLetter();
-            player2key4.GetComponent<KeyScript>().SetLetter();
-            player2key5.GetComponent<KeyScript>().SetLetter();
-            player3key1.GetComponent<KeyScript>().SetLetter();
-            player3key2.GetComponent<KeyScript>().SetLetter();
-            player3key3.GetComponent<KeyScript>().SetLetter();
-            player3key4.GetComponent<KeyScript>().SetLetter();
-            player3key5.GetComponent<KeyScript>().SetLetter();
         }
         if (playerAmount == 4)
         {
@@ -195,21 +173,6 @@ public class GameEngine : MonoBehaviour
             player4key3.GetComponent<KeyScript>().keyLetter = player4Keys[2];
             player4key4.GetComponent<KeyScript>().keyLetter = player4Keys[3];
             player4key5.GetComponent<KeyScript>().keyLetter = player4Keys[4];
-            player2key1.GetComponent<KeyScript>().SetLetter();
-            player2key2.GetComponent<KeyScript>().SetLetter();
-            player2key3.GetComponent<KeyScript>().SetLetter();
-            player2key4.GetComponent<KeyScript>().SetLetter();
-            player2key5.GetComponent<KeyScript>().SetLetter();
-            player3key1.GetComponent<KeyScript>().SetLetter();
-            player3key2.GetComponent<KeyScript>().SetLetter();
-            player3key3.GetComponent<KeyScript>().SetLetter();
-            player3key4.GetComponent<KeyScript>().SetLetter();
-            player3key5.GetComponent<KeyScript>().SetLetter();
-            player4key1.GetComponent<KeyScript>().SetLetter();
-            player4key2.GetComponent<KeyScript>().SetLetter();
-            player4key3.GetComponent<KeyScript>().SetLetter();
-            player4key4.GetComponent<KeyScript>().SetLetter();
-            player4key5.GetComponent<KeyScript>().SetLetter();
         }
     }
 
@@ -266,7 +229,6 @@ public class GameEngine : MonoBehaviour
                 letter = Object.Instantiate(letterObject, new Vector3(-7.5f + i, 0.5f, 0), Quaternion.identity);
                 string objectName = string.Format("key" + keysQwerty[i]);
                 letter.GetComponent<KeyScript>().keyLetter = (keysQwerty[i]);
-                //letter.GetComponent<KeyScript>().SetLetter();
                 letter.name = objectName;
             }
             if (i > 11 && i <= 23)
@@ -275,7 +237,6 @@ public class GameEngine : MonoBehaviour
                 string objectName = string.Format("key" + keysQwerty[i]);
                 letter = Object.Instantiate(letterObject, new Vector3(-7f + i - 12, -0.25f, 0), Quaternion.identity);
                 letter.GetComponent<KeyScript>().keyLetter = (keysQwerty[i]);
-                //letter.GetComponent<KeyScript>().SetLetter();
                 letter.name = objectName;
             }
             if (i > 23 && i <= 34)
@@ -284,7 +245,6 @@ public class GameEngine : MonoBehaviour
                 letter = Object.Instantiate(letterObject, new Vector3(-6.5f + i - 24, -1f, 0), Quaternion.identity);
                 string objectName = string.Format("key" + keysQwerty[i]);
                 letter.GetComponent<KeyScript>().keyLetter = (keysQwerty[i]);
-                //letter.GetComponent<KeyScript>().SetLetter();
                 letter.name = objectName;
             }
             if (i > 34 && i <= 44)
@@ -293,7 +253,6 @@ public class GameEngine : MonoBehaviour
                 letter = Object.Instantiate(letterObject, new Vector3(-6f + i - 35, -1.75f, 0), Quaternion.identity);
                 string objectName = string.Format("key" + keysQwerty[i]);
                 letter.GetComponent<KeyScript>().keyLetter = (keysQwerty[i]);
-                //letter.GetComponent<KeyScript>().SetLetter();
                 letter.name = objectName;
             }
         }
@@ -307,7 +266,6 @@ public class GameEngine : MonoBehaviour
             {
                 GameObject targetKey = GameObject.Find(string.Format("key" + c));
                 targetKey.GetComponent<KeyScript>().keyColor = player1color;
-                //targetKey.GetComponent<KeyScript>().SetColor();
             }
         }
         foreach (char c in player2Keys)
@@ -316,7 +274,6 @@ public class GameEngine : MonoBehaviour
             {
                 GameObject targetKey = GameObject.Find(string.Format("key" + c));
                 targetKey.GetComponent<KeyScript>().keyColor = player2color;
-                //targetKey.GetComponent<KeyScript>().SetColor();
             }
         }
         foreach (char c in player3Keys)
@@ -325,7 +282,6 @@ public class GameEngine : MonoBehaviour
             {
                 GameObject targetKey = GameObject.Find(string.Format("key" + c));
                 targetKey.GetComponent<KeyScript>().keyColor = player3color;
-                //targetKey.GetComponent<KeyScript>().SetColor();
             }
         }
         foreach (char c in player4Keys)
@@ -334,7 +290,6 @@ public class GameEngine : MonoBehaviour
             {
                 GameObject targetKey = GameObject.Find(string.Format("key" + c));
                 targetKey.GetComponent<KeyScript>().keyColor = player4color;
-                //targetKey.GetComponent<KeyScript>().SetColor();
             }
         }
     }
@@ -347,7 +302,6 @@ public class GameEngine : MonoBehaviour
             {
                 GameObject targetKey = GameObject.Find(string.Format("key" + c));
                 targetKey.GetComponent<KeyScript>().keyColor = Color.white;
-                //targetKey.GetComponent<KeyScript>().SetColor();
             }
         }
         foreach (char c in player2KeySection)
@@ -356,7 +310,6 @@ public class GameEngine : MonoBehaviour
             {
                 GameObject targetKey = GameObject.Find(string.Format("key" + c));
                 targetKey.GetComponent<KeyScript>().keyColor = Color.white;
-                //targetKey.GetComponent<KeyScript>().SetColor();
             }
         }
         foreach (char c in player3KeySection)
@@ -365,7 +318,6 @@ public class GameEngine : MonoBehaviour
             {
                 GameObject targetKey = GameObject.Find(string.Format("key" + c));
                 targetKey.GetComponent<KeyScript>().keyColor = Color.white;
-                //targetKey.GetComponent<KeyScript>().SetColor();
             }
         }
         foreach (char c in player4KeySection)
@@ -374,7 +326,6 @@ public class GameEngine : MonoBehaviour
             {
                 GameObject targetKey = GameObject.Find(string.Format("key" + c));
                 targetKey.GetComponent<KeyScript>().keyColor = Color.white;
-                //targetKey.GetComponent<KeyScript>().SetColor();
             }
         }
     }
@@ -736,18 +687,18 @@ public class GameEngine : MonoBehaviour
 
     IEnumerator BlinkKey(GameObject key, Color color)
     {
-        /*for (int i = 0; i < 6; i++)
-        { 
-            yield return spinnerDelay;
+        yield return spinnerDelay;
+        for (int i = 0; i < 6; i++)
+        {
             key.GetComponent<KeyScript>().keyColor = color;
-            key.GetComponent<KeyScript>().SetColor();
             yield return blinkDelay;
             key.GetComponent<KeyScript>().keyColor = Color.white;
             yield return blinkDelay;
-        }*/
+        }
         key.GetComponent<KeyScript>().keyColor = color;
-        yield return spinnerDelay;
         allowSpin = true;
+        ClearKeys();
+        SetColors();
         yield return blinkDelay;
     }
 
@@ -757,11 +708,8 @@ public class GameEngine : MonoBehaviour
         {
             foreach (char c in player1Keys)
             {
-                //string keyCode = GetKeyCode(c);
-                //Debug.Log(keyCode);
                 if (c != '!')
                 {
-                    //if (Input.GetKey(keyCode))
                     string keyCode = "" + c;
                     if (Input.GetKey(keyCode))
                     {
@@ -779,15 +727,9 @@ public class GameEngine : MonoBehaviour
         if (checkCounter == 30)
         {
             for (int i = 0; i < 5; i++)
-            //foreach (char c in player1Keys)
             {
-                //string keyCode = GetKeyCode(c);
-                //Debug.Log(keyCode);
                 if (player1Keys[i] != '!')
-                //if (c != '!')
                 {
-                    //if (Input.GetKey(keyCode))
-                    //string keyCode = "" + c;
                     string keyCode = "" + player1Keys[i];
                     if (Input.GetKey(keyCode))
                     {
@@ -842,20 +784,6 @@ public class GameEngine : MonoBehaviour
             }
             checkCounter = 0;
         }
-        /*foreach (char c in player1Keys)
-        {
-            //string keyCode = GetKeyCode(c);
-            //Debug.Log(keyCode);
-            if (c != '!')
-            {
-                //if (Input.GetKey(keyCode))
-                string keyCode = "" + c;
-                if (Input.GetKey(keyCode))
-                {
-                    Debug.Log("Correct Key Pressed!");
-                }
-            }
-        }*/
     }
 
     string GetKeyCode(char c)
