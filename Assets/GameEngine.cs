@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class GameEngine : MonoBehaviour
 {
-    WaitForSeconds spinnerDelay = new WaitForSeconds(2f);
-    WaitForSeconds fingerCheckDelay = new WaitForSeconds(0.5f);
-    WaitForSeconds blinkDelay = new WaitForSeconds(0.1f);
+    readonly WaitForSeconds spinnerDelay = new WaitForSeconds(2f);
+    readonly WaitForSeconds fingerCheckDelay = new WaitForSeconds(0.5f);
+    readonly WaitForSeconds blinkDelay = new WaitForSeconds(0.1f);
 
     Color player1color = Color.red;
     Color player2color = Color.blue;
@@ -32,6 +32,7 @@ public class GameEngine : MonoBehaviour
     int playerAmount;
     int playerTurn = 1;
     int player1score, player2score, player3score, player4score;
+    int checkCounter = 0;
 
     // playerkeys gives values for fingers (thumb, index, middle, ring, pinky)
     char[] player1Keys = { '!', '!', '!', '!', '!' };
@@ -120,9 +121,13 @@ public class GameEngine : MonoBehaviour
             chosenKey = SpinFinger();
             StartCoroutine(SetFinger(chosenKey, chosenLetter));
         }
+    }
+
+    void FixedUpdate()
+    {
         ClearKeys();
         SetColors();
-        //CheckFingers2();
+        CheckFingers2();
     }
 
     void SetKeys()
@@ -731,7 +736,7 @@ public class GameEngine : MonoBehaviour
 
     IEnumerator BlinkKey(GameObject key, Color color)
     {
-        for (int i = 0; i < 6; i++)
+        /*for (int i = 0; i < 6; i++)
         { 
             yield return spinnerDelay;
             key.GetComponent<KeyScript>().keyColor = color;
@@ -739,8 +744,9 @@ public class GameEngine : MonoBehaviour
             yield return blinkDelay;
             key.GetComponent<KeyScript>().keyColor = Color.white;
             yield return blinkDelay;
-        }
+        }*/
         key.GetComponent<KeyScript>().keyColor = color;
+        yield return spinnerDelay;
         allowSpin = true;
         yield return blinkDelay;
     }
@@ -769,7 +775,74 @@ public class GameEngine : MonoBehaviour
 
     void CheckFingers2()
     {
-        foreach (char c in player1Keys)
+        checkCounter++;
+        if (checkCounter == 30)
+        {
+            for (int i = 0; i < 5; i++)
+            //foreach (char c in player1Keys)
+            {
+                //string keyCode = GetKeyCode(c);
+                //Debug.Log(keyCode);
+                if (player1Keys[i] != '!')
+                //if (c != '!')
+                {
+                    //if (Input.GetKey(keyCode))
+                    //string keyCode = "" + c;
+                    string keyCode = "" + player1Keys[i];
+                    if (Input.GetKey(keyCode))
+                    {
+                        Debug.Log("Correct Key Pressed! " + player1Keys[i]);
+                    }
+                }
+            }
+        }
+        if (checkCounter == 60 && playerAmount > 1)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                if (player2Keys[i] != '!')
+                {
+                    string keyCode = "" + player2Keys[i];
+                    if (Input.GetKey(keyCode))
+                    {
+                        Debug.Log("Correct Key Pressed! " + player2Keys[i]);
+                    }
+                }
+            }
+        }
+        if (checkCounter == 90 && playerAmount > 2)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                if (player3Keys[i] != '!')
+                {
+                    string keyCode = "" + player3Keys[i];
+                    if (Input.GetKey(keyCode))
+                    {
+                        Debug.Log("Correct Key Pressed! " + player3Keys[i]);
+                    }
+                }
+            }
+        }
+        if (checkCounter == 120)
+        {
+            if (playerAmount == 4)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    if (player4Keys[i] != '!')
+                    {
+                        string keyCode = "" + player4Keys[i];
+                        if (Input.GetKey(keyCode))
+                        {
+                            Debug.Log("Correct Key Pressed! " + player4Keys[i]);
+                        }
+                    }
+                }
+            }
+            checkCounter = 0;
+        }
+        /*foreach (char c in player1Keys)
         {
             //string keyCode = GetKeyCode(c);
             //Debug.Log(keyCode);
@@ -782,7 +855,7 @@ public class GameEngine : MonoBehaviour
                     Debug.Log("Correct Key Pressed!");
                 }
             }
-        }
+        }*/
     }
 
     string GetKeyCode(char c)
